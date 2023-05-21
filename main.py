@@ -7,6 +7,14 @@ from clsCmd import clear as clearing
 current_room = None
 
 # commands
+@when("i got bitches")
+def no_bitches():
+    say("""
+It's rude to lie...
+
+YOU GOT NO BITCHES LMFAO!
+""")
+
 @when("scream")
 @when("yell")
 @when("shout")
@@ -84,52 +92,73 @@ def none_command_matches(command):
 alib.no_command_matches = none_command_matches
 
 # rooms for myaltworld
-class House_1:
-    # attributes for your house
-    room_3 = Room("""
-        OH MY GOD!!
-        How could this happen?
+room_3 = Room("""
+You woke up and...          
 
-        You're in your bedroom!!!!
-        It looks messy by the way...
 
-        There are clothes everywhere!
-        If your mother was still here...
-        She'd tell you to clean up this mess...
-        But she isn't... here...
+OH MY GOD!!
+How could this happen?
 
-        There is only one exit to south.
-        Unless you could jump from the window...
-        I mean it's just a one floor house so...
-                    """)
 
-    room_5 = Room("""
-        How interesting!
+You're in your bedroom!!!!
 
-        By leaving your room, you reach the main corridor.
+It looks messy by the way...
 
-        To the RIGHT, there's your mother's bedroom.
-        It's always locked. Dad sleeps in the couch...
-        He's too afraid of his loss...
-        You too are...
 
-        To the LEFT, the amazing... bathroom...
+There are clothes everywhere!
 
-        To SOUTH, you can take a glance at your huge
-        dining room...
+If your mother was still here...
 
-        There is nothing else to say, except for some
-        paitings covered by spider webs...
-        """)
+She'd tell you to clean up this mess...
 
-    room_5.north = room_3
-    room_3.south = room_5
+But she isn't... here...
 
+
+There is only one exit to south.
+
+Unless you could jump from the window...
+
+I mean it's just a one floor house so...
+
+""")
+
+room_4 = Room("""room coming tomorrow lel""")
+
+room_5 = Room("""
+How interesting!
+
+By leaving your room, you reach the main corridor.
+
+To the RIGHT, there's your mother's bedroom.
+It's always locked. Dad sleeps in the couch...
+He's too afraid of his loss...
+You too are...
+
+To the LEFT, the amazing... bathroom...
+
+To SOUTH, you can take a glance at your huge
+dining room...
+
+There is nothing else to say, except for some
+paitings covered by spider webs...
+
+""")
+
+# atributes
+room_5.north = room_3
+room_3.south = room_5
 
 Room.can_yell = True
 Room.can_brush = False
 
 
 if __name__ == '__main__':
-    current_room = House_1.room_3
-    start() # used to load the game
+    current_room = room_3
+    clear()
+    with open("init.txt", 'r', encoding='utf-8') as initTextFile:
+        initText = initTextFile.read()
+        initTextFile.close()
+    print(initText)
+    print("\n\n\t\t\t\t\t< THE ADVENTURE BEGINS >\n\n\n")
+    say(room_3)
+    start(help=False) # used to load the game
