@@ -122,7 +122,7 @@ I mean it's just a one floor house so...
 
 """)
 
-room_4 = Room("""room coming tomorrow lel""")
+room_4 = Room("""room coming ...idk, capiche?...""")
 
 room_5 = Room("""
 How interesting!
